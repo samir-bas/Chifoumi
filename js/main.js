@@ -6,8 +6,6 @@ var choice = {
 }
 
 var choice2 = ["PIERRE", "FEUILLE", "CISEAUX"]
-var scorePlayer = 0;
-var scorePC = 0;
 
 function check_choice(nameChoice) {
     var find = false;
@@ -29,7 +27,7 @@ function objlength(obj)
     }
     return size
 }
-// Attribute a number for choices in table
+// Attribute a number for choices in array
 function fill_array(choicePlayer, choicePC) 
 {
     if ((choicePlayer === "CISEAUX" || choicePC === "CISEAUX") && (choicePlayer === "PIERRE" || choicePC === "PIERRE")) {
@@ -59,7 +57,7 @@ function addScore(choicePlayer, choicePC)
     }
     else {
         scorePlayer++;
-        whoWin = "Player Win"
+        whoWin = "Player " + player + " Win"
     } 
     return whoWin
 }
@@ -68,9 +66,11 @@ function randomChoice() {
    return Math.floor(Math.random() * Math.floor(choice2.length))
 }
 
-function beginGame ()
+function beginGame()
 {
-    var nbTurn = 3 // Number of turn
+    //var scorePlayer = 0;
+    //var scorePC = 0;
+    ///var nbTurn = 3 // Number of turn
     var alertMessage = ""
     var whoWin = ""
     while (scorePlayer < nbTurn && scorePC < nbTurn) 
@@ -102,12 +102,13 @@ function beginGame ()
 
 alert("Welcome Player");
 var player = prompt("Enter Your Name please ").toUpperCase();
-var rep ;
-rep = prompt("Do you want to begin the game (Y)es/(N)o").toUpperCase();
+var rep = prompt("Do you want to begin the game (Y)es/(N)o").toUpperCase();
 while (rep === "Y") 
 {
+    var scorePlayer = 0;
+    var scorePC = 0;
+    var nbTurn = 3 // Number of turn
     beginGame();
-    rep = prompt("Do you want to continue (Y)es/(N)o").toUpperCase();
-    // alert(rep);
+    var rep = prompt("Do you want to continue the game (Y)es/(N)o").toUpperCase();
 }
 alert("End Game");
